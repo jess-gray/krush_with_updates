@@ -1,0 +1,5 @@
+Hello Melissa!
+Growing up I played at my dad's volleyball club and I always noticed there were some things that I wanted to add to the website for recruiting purposes. So I created a mock webiste with an ability to view team info with player and coach info. (This way a recruiter can see what position they play, if they have already commited and so on)
+With that being said I thought it would be eaiser to manage if approved users could go on and add, edit, and delete team and player info. This is why on the registration they have to have the VBALL code 
+Outside of the MVP I would like to add an API for directions to the Facility as well as an option to edit the coaches information. I have not done a many to many relationship so I would like that to be my main focus.
+Github link: 

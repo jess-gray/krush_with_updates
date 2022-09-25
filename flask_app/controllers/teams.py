@@ -7,6 +7,6 @@ from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
 
-@app.route('/')
+@app.route('/krushvbc')
 def route():
     return render_template('index.html')

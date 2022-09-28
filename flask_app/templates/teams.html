@@ -18,7 +18,7 @@
                 <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarNav">
                     <ul class="navbar-nav ">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Team Info</a>
+                            <a class="nav-link active" aria-current="page" href="/krushvbc">Home</a>
                         </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="/login">Login</a>
@@ -27,8 +27,13 @@
                 </div>
             </div>
         </nav>
+        <h1>League Teams</h1>
+                {% for one_team in all_the_teams %} 
 
-
+                        <p>{{one_team.team_name}}</p>
+                        
+                {% endfor %}
+    
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>

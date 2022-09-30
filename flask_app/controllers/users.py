@@ -42,3 +42,18 @@ def login():
         return redirect('/login')
     session['user_id'] = user_in_db.id #this is result of select query 
     return redirect('/team_info')
+
+@app.route('/logout') #this is to logout
+def logout():
+    session.clear() #this clears the session 
+    return redirect('/krushvbc')
+
+
+@app.route('/krushvbc') #this is the homepage
+def route():
+    # if "user_id" not in session:     #can I do this backwards?
+    #     return('/krushvbc')
+    data = {
+        'id' : session['user_id']
+    }
+    return render_template('index.html', active_user = User.get_by_id(data))

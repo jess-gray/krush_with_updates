@@ -34,6 +34,14 @@ class User:
             return False
         return cls(results[0])
     
+    
+    @classmethod #this is to get user by ID
+    def get_by_id(cls, data):
+        query = 'SELECT * FROM users WHERE id = %(id)s;'
+        results = connectToMySQL('krush_project').query_db(query, data)
+        print(results)
+        return cls(results[0])
+    
 
     #validations 
 

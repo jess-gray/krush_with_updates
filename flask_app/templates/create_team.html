@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Create Recipe</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 </head>
 <body>
+    {% with messages = get_flashed_messages() %}    <!-- declare a variable called messages -->
+        {% if messages %}                           <!-- check if there are any messages -->
+            {% for message in messages %}           <!-- loop through the messages -->
+                <p>{{message}}</p>                  <!-- display each message in a paragraph tag -->
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     <div class="container-md " >
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
@@ -27,11 +34,24 @@
                 </div>
             </div>
         </nav>
-        <h1>League Teams</h1>
-                {% for one_team in all_the_teams %} 
-                    <a href="/team/{{one_team.id}}">{{one_team.team_name}}</a>
-                {% endfor %}
-        <a href="/add_team">Add Team</a>
+        <h1 class="display-4"> Add a New Team! </h1> 
+        <form action="/submit_team" method="post">
+            <div class="mb-3">
+                <label for="team_name" class="form-label">Team Name:</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="team_name">
+            </div>
+            <div class="mb-3">
+                <label for='head_coach' class="form-label">Head Coach:</label>
+                <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" name="head_coach">
+            </div>
+            <div class="mb-3">
+                <label for='assistant_coach' class="form-label">Assistant Coach:</label>
+                <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" name="assistant_coach">
+            </div>
+            <input type="submit" class="btn btn-primary mt-4" value ='Add Team'></input>
+        </form>
+
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>

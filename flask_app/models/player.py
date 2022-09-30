@@ -8,6 +8,7 @@ class Player:
         self.id = data['id'] 
         self.player_first_name = data['player_first_name']
         self.player_last_name = data['player_last_name']
+        self.jersey_number = data['jersey_number']
         self.player_position = data['player_position']
         self.highschool = data['highschool']
         self.college_commit = data['college_commit']

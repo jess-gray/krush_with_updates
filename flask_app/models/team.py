@@ -56,10 +56,13 @@ class Team:
         results = connectToMySQL('krush_project').query_db(query, data)
         print(results)
         return results
-    
-    # @classmethod
-    # def get_team_user(cls):
-        #select query if needed for adding in new team
+
+    @classmethod #this is to delete team
+    def delete_team(cls, data):
+        query = 'DELETE FROM teams WHERE id = %(id)s;'
+        results = connectToMySQL('krush_project').query_db(query, data)
+        print(results)
+        return results
 
 
 

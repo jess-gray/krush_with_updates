@@ -36,6 +36,18 @@ def one_team(id):
     a_team = Team.get_team_players(data)
     return render_template('team_info.html', one_team = a_team)
 
+# @app.route('/team/<int:id>') #this is to view one users posts
+# def view_post(id):
+#     data = { 
+#         'id' : id
+#     }
+#     a_player = Player.get_one_with_team(data) #this doesn't need to be looped through bc it is a dictionary not a list.
+#     all_players = Player.get_all_with_team() #looping through bc it is returning a list on the class method
+#     print(all_players, '******')
+#     return render_template('team_info.html', one_player = a_player, all_the_players = all_players )
+
+
+
 @app.route('/add_team') #form to create team
 def create_team():
     return render_template("create_team.html")
@@ -52,4 +64,13 @@ def submit_team():
         "user_id" : session['user_id'] #this is coming from login 
     }
     Team.create(data) 
+    return redirect ('/team_info')
+
+
+@app.route('/delete_team/<int:id>', methods = ["POST"]) #this is to delete player
+def delete_team(id):
+    data = {
+        'id' : id
+    }
+    Team.delete_team(data)
     return redirect ('/team_info')

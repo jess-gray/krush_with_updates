@@ -1,6 +1,9 @@
 from flask_app import app
 from flask import Flask, render_template, request, redirect, session, flash 
 from flask_app.models.user import User
+from flask_app.models.player import Player
+from flask_app.models.team import Team 
+
 from flask_bcrypt import Bcrypt
 
 bcrypt = Bcrypt(app)
@@ -51,8 +54,8 @@ def logout():
 
 @app.route('/krushvbc') #this is the homepage
 def route():
-    # if "user_id" not in session:     #can I do this backwards?
-    #     return('/krushvbc')
+    if "user_id" not in session:     #can I do this backwards?
+        return render_template('index.html')
     data = {
         'id' : session['user_id']
     }

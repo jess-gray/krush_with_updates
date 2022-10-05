@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>All teams</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 </head>
 <body>
@@ -20,19 +20,31 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/krushvbc">Home</a>
                         </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/login">Login</a>
-                    </li>
-                    </ul>
+                        {% if 'user_id' in session%}
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/logout">logout</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/login">login</a>
+                        </li>
+                        {% endif %}
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
         <h1>League Teams</h1>
                 {% for one_team in all_the_teams %} 
                     <a href="/team/{{one_team.id}}">{{one_team.team_name}}</a>
                 {% endfor %}
-        <a href="/add_team">Add Team</a>
+        
+                {% if 'user_id' in session%}
+        <div>
+            <a  class="btn btn-primary" href="/add_team">Add Team</a>
+            <a class="btn btn-primary" href="/add_player">Add Player</a>
+        </div>
     </div>
+                {% endif %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
 </html>

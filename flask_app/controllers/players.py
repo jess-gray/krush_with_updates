@@ -47,10 +47,10 @@ def edit(id):
     return render_template('edit_player.html', one_player = a_player)
 
 
-@app.route('/submit_player/<int:id>', methods = ['POST']) #this is to actually edit the show
+@app.route('/submit_player/<int:id>', methods = ['POST']) #this is to actually edit the user
 def update(id):
     if not Player.validate_edit_player(request.form): #validations
-        return redirect(f'/submit_player/{id}') 
+        return redirect(f'/edit/{id}') 
     data = {
         'id' : id,
         'player_first_name' : request.form['player_first_name'],
@@ -62,3 +62,6 @@ def update(id):
     }
     Player.update(data)
     return redirect('/team_info')
+
+
+    

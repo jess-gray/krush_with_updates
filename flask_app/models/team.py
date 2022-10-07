@@ -19,7 +19,7 @@ class Team:
 
     @classmethod #this is to show all the teams
     def get_all(cls):
-        query = 'SELECT * FROM teams;'
+        query = 'SELECT * FROM teams ORDER BY team_name ASC;'
         results = connectToMySQL('krush_project').query_db(query)
         print(results)
         all_teams = []
@@ -29,7 +29,7 @@ class Team:
     
     @classmethod #this is to show all the players under one team
     def get_team_players(cls, data):
-        query = 'SELECT * FROM teams LEFT JOIN players ON teams.id = players.team_id WHERE teams.id = %(id)s;'
+        query = 'SELECT * FROM teams LEFT JOIN players ON teams.id = players.team_id WHERE teams.id = %(id)s ORDER BY jersey_number ASC;'
         results = connectToMySQL('krush_project').query_db(query, data)
         print(results)
         one_team = cls(results[0])

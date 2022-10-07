@@ -75,25 +75,44 @@ class Player:
         results = connectToMySQL('krush_project').query_db(query, data)
         print(results)
         return results
+    
+    @classmethod #this is to get user info by jersey #
+    def get_by_number(cls, data):
+        query = 'SELECT * FROM players WHERE jersey_number = %(jersey_number)s;'
+        results = connectToMySQL('krush_project').query_db(query, data)
+        print(results)
+        if results == (): #this is to help validate the jersey # is not in db
+            return False
+        return cls(results[0])
+
+#want to add validation to check jersey number against database 
 
     @staticmethod #validations for creating team
     def validate_create_player(reqForm):
         is_valid = True
+        print("XX:" + reqForm['jersey_number'])
         if len(reqForm['player_first_name']) <3:
             flash ('first name must be 3 characters!')
             is_valid = False
         if len(reqForm['player_last_name']) <3:
             flash ('last name must be at least 3 characters!')
             is_valid = False
-        if int(reqForm['jersey_number']) <0 :
+        if reqForm['jersey_number'] == "" or int(reqForm['jersey_number']) <1 :
             flash ('must enter jesrsey number!')
+            is_valid = False
+        data = {
+            'jersey_number' : reqForm['jersey_number']
+        }
+        jersey_in_db = Player.get_by_number(data)        
+        if jersey_in_db:
+            flash('jersey number already taken!')
             is_valid = False
         if len(reqForm['highschool']) <3:
             flash ('high school must be at least 3 characters!')
             is_valid = False
         return is_valid
 
-    @staticmethod #validations for creating team
+    @staticmethod #validations for editing team
     def validate_edit_player(reqForm):
         is_valid = True
         if len(reqForm['player_first_name']) <3:
@@ -102,7 +121,7 @@ class Player:
         if len(reqForm['player_last_name']) <3:
             flash ('last name must be at least 3 characters!')
             is_valid = False
-        if int(reqForm['jersey_number']) <0 :
+        if reqForm['jersey_number'] == "" or int(reqForm['jersey_number']) <1 :
             flash ('must enter jesrsey number!')
             is_valid = False
         if len(reqForm['highschool']) <3:
@@ -110,3 +129,4 @@ class Player:
             is_valid = False
         return is_valid
     
+    # **Need to fix function so it takes from a specific team

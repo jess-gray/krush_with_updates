@@ -48,36 +48,42 @@
                 </div>
             </nav>
         </div>
-        
-        <h1 class="display-6"> Edit {{one_player.player_first_name}}'s information </h1> 
-        <form action="/submit_player/{{one_player.id}}" method="post">
-            <div class="mb-3">
-                <label for="player_first_name" class='form-label'>First Name:</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" name="player_first_name" value = "{{one_player.player_first_name}}">
+        <div class="container text-center">
+            <h1 class="display-6 text-danger"> Edit {{one_player.player_first_name}}'s information </h1> 
+        </div>
+        <div class="container" >
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <form action="/submit_player/{{one_player.id}}" method="post">
+                        <div class="mb-3">
+                            <label for="player_first_name" class='form-label'>First Name:</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="player_first_name" value = "{{one_player.player_first_name}}">
+                        </div>
+                        <div class="mb-3">
+                            <label for='player_last_name' class="form-label">Last Name:</label>
+                            <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" name="player_last_name" value = "{{one_player.player_last_name}}">
+                        </div>
+                        <div class="mb-3">
+                            <label for='jersey_number' class="form-label">Jersey Number:</label>
+                            <input type="number" class="form-control" id="exampleFormControlTextarea1" rows="3" name="jersey_number" value = "{{one_player.jersey_number}}">
+                        </div>
+                        <div class="mb-3">
+                            <label for='player_position' class="form-label">Player Position:</label>
+                            <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" name="player_position" value = "{{one_player.player_position}}">
+                        </div>
+                        <div class="mb-3">
+                            <label for='highschool' class="form-label">High School:</label>
+                            <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" name="highschool" value = "{{one_player.highschool}}">
+                        </div>
+                        <div class="mb-3">
+                            <label for='college_commit' class="form-label">College Commit:</label>
+                            <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" name="college_commit" value = "{{one_player.college_commit}}">
+                        </div>
+                        <input type="submit" class="btn btn-danger mt-4" value ='Update player info'></input>
+                    </form>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for='player_last_name' class="form-label">Last Name:</label>
-                <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" name="player_last_name" value = "{{one_player.player_last_name}}">
-            </div>
-            <div class="mb-3">
-                <label for='jersey_number' class="form-label">Jersey Number:</label>
-                <input type="number" class="form-control" id="exampleFormControlTextarea1" rows="3" name="jersey_number" value = "{{one_player.jersey_number}}">
-            </div>
-            <div class="mb-3">
-                <label for='player_position' class="form-label">Player Position:</label>
-                <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" name="player_position" value = "{{one_player.player_position}}">
-            </div>
-            <div class="mb-3">
-                <label for='highschool' class="form-label">High School:</label>
-                <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" name="highschool" value = "{{one_player.highschool}}">
-            </div>
-            <div class="mb-3">
-                <label for='college_commit' class="form-label">College Commit:</label>
-                <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" name="college_commit" value = "{{one_player.college_commit}}">
-            </div>
-            <input type="submit" class="btn btn-danger mt-4" value ='Update player info'></input>
-        </form>
-
+        </div>
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>

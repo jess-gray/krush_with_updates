@@ -4,7 +4,7 @@ import requests
 from flask_app.models.user import User
 from flask_app.models.player import Player
 from flask_app.models.team import Team 
-from apis import MAP_API_KEY
+
 
 from flask_bcrypt import Bcrypt
 

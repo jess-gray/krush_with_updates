@@ -76,7 +76,7 @@ class Player:
         print(results)
         return results
     
-    @classmethod #this is to get user info by jersey #
+    @classmethod #this is to get user info by jersey # # need to join on team 
     def get_by_number(cls, data):
         query = 'SELECT * FROM players WHERE jersey_number = %(jersey_number)s;'
         results = connectToMySQL('krush_project').query_db(query, data)
@@ -86,8 +86,9 @@ class Player:
         return cls(results[0])
 
 #want to add validation to check jersey number against database 
+# Need to fix function so it takes from a specific team
 
-    @staticmethod #validations for creating team
+    @staticmethod #validations for creating team   
     def validate_create_player(reqForm):
         is_valid = True
         print("XX:" + reqForm['jersey_number'])
@@ -100,13 +101,13 @@ class Player:
         if reqForm['jersey_number'] == "" or int(reqForm['jersey_number']) <1 :
             flash ('must enter jesrsey number!')
             is_valid = False
-        data = {
-            'jersey_number' : reqForm['jersey_number']
-        }
-        jersey_in_db = Player.get_by_number(data)        
-        if jersey_in_db:
-            flash('jersey number already taken!')
-            is_valid = False
+        # data = {
+        #     'jersey_number' : reqForm['jersey_number']
+        # }
+        # jersey_in_db = Player.get_by_number(data)        
+        # if jersey_in_db:
+        #     flash('jersey number already taken!')
+        #     is_valid = False
         if len(reqForm['highschool']) <3:
             flash ('high school must be at least 3 characters!')
             is_valid = False
@@ -129,4 +130,4 @@ class Player:
             is_valid = False
         return is_valid
     
-    # **Need to fix function so it takes from a specific team
+    

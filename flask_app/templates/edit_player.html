@@ -49,7 +49,7 @@
             </nav>
         </div>
         
-        <h1 class="display-4"> Edit {{one_player.player_first_name}}'s information </h1> 
+        <h1 class="display-6"> Edit {{one_player.player_first_name}}'s information </h1> 
         <form action="/submit_player/{{one_player.id}}" method="post">
             <div class="mb-3">
                 <label for="player_first_name" class='form-label'>First Name:</label>
@@ -75,7 +75,7 @@
                 <label for='college_commit' class="form-label">College Commit:</label>
                 <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" name="college_commit" value = "{{one_player.college_commit}}">
             </div>
-            <input type="submit" class="btn btn-primary mt-4" value ='Update player info'></input>
+            <input type="submit" class="btn btn-danger mt-4" value ='Update player info'></input>
         </form>
 
 

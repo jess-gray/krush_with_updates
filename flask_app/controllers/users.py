@@ -64,11 +64,3 @@ def route():
     }
     return render_template('index.html', active_user = User.get_by_id(data))
 
-# @app.route('/map_data')
-# def getMapdata():
-#     headers = {
-#     'X-RapidAPI-Key': MAP_API_KEY,
-#     'X-RapidAPI-Host': "trueway-directions2.p.rapidapi.com"
-#     }
-#     r = requests.get(f'FindDrivingRoute?stops=40.629041%2C-74.025606%3B40.630099%2C-73.993521%3B40.644895%2C-74.013818%3B40.627177%2C-73.980853", headers=headers')
-#     return jsonify(r.json())

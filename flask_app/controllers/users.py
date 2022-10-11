@@ -6,6 +6,7 @@ from flask_app.models.player import Player
 from flask_app.models.team import Team 
 
 
+
 from flask_bcrypt import Bcrypt
 
 bcrypt = Bcrypt(app)

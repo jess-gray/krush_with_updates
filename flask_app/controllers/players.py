@@ -28,6 +28,39 @@ def submit_player():
     Player.create_player(data) 
     return redirect (f'team/{request.form["team_id"]}')
 
+@app.route('/add_team_player<int:id>') #this is to add a player to specific team
+def add_a_player(id):
+    data = {
+        'id': id
+    }
+    all_teams = Team.get_team_players(data)
+    return render_template("oneteam_create_player.html", one_team = all_teams)
+
+    
+
+@app.route('/submit_team_player<int:id>', methods = ['POST']) #this is to create a player to specific team
+def submit_team_player(id):
+    print(request.form)
+    if not Player.validate_create_player(request.form): #validations
+        return redirect('/add_team_player') 
+    data = {
+        'player_first_name' : request.form['player_first_name'],
+        'player_last_name' : request.form['player_last_name'],
+        'jersey_number' : request.form['jersey_number'],
+        'player_position' : request.form['player_position'],
+        'highschool' : request.form['highschool'],
+        'college_commit' : request.form['college_commit'],
+        'team_id' : id,
+        "user_id" : session['user_id'] 
+    }
+    Player.create_player(data) 
+    return redirect ('/team_info')
+
+
+
+
+
+
 @app.route('/delete/<int:id>', methods = ["POST"]) #this is to delete player
 def delete(id):
     data = {
